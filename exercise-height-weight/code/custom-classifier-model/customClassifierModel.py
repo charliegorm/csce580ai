@@ -1,51 +1,14 @@
 import pandas as pd
-import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression, LogisticRegression
-from sklearn.metrics import r2_score, f1_score, roc_auc_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import f1_score, roc_auc_score
 from sklearn.preprocessing import label_binarize
 
-# ----------------
-# 1. Load & Clean Data
-# ----------------
-df = pd.read_csv("DataSample-WeightHeight - Sheet1.csv", skiprows=1)
-
-# Strip whitespace from headers
-df.columns = df.columns.str.strip()
-
-# Rename columns
-df = df.rename(columns={
-    "Height (cm)": "Height",
-    "Weight (kg)": "Weight"
-})
-
-# Convert to numeric and drop invalid rows
-df["Height"] = pd.to_numeric(df["Height"], errors="coerce")
-df["Weight"] = pd.to_numeric(df["Weight"], errors="coerce")
-df = df.dropna(subset=["Height", "Weight"])
-df = df[(df["Height"] > 0) & (df["Weight"] > 0)]
-
-print("Cleaned dataset shape:", df.shape)
+# Load cleaned dataset
+df = pd.read_csv("../data/cleaned_data.csv")
 
 # ----------------
-# 2. Regression: Predict Weight from Height
-# ----------------
-X_reg = df[["Height"]]
-y_reg = df["Weight"]
-
-X_train, X_test, y_train, y_test = train_test_split(
-    X_reg, y_reg, test_size=0.2, random_state=42
-)
-
-reg = LinearRegression()
-reg.fit(X_train, y_train)
-y_pred_reg = reg.predict(X_test)
-
-print("\n=== Regression Metrics ===")
-print("R²:", r2_score(y_test, y_pred_reg))
-
-# ----------------
-# 3. Classification: Predict BMI Category
+# Classification: Predict BMI Category
 # ----------------
 df["BMI"] = df["Weight"] / (df["Height"]/100)**2
 
@@ -78,9 +41,8 @@ clf.fit(X_train, y_train)
 y_pred_clf = clf.predict(X_test)
 
 # ----------------
-# 4. Classification Metrics: F1-score & AUC-ROC
+# Classification Metrics
 # ----------------
-# F1-score (macro)
 f1 = f1_score(y_test, y_pred_clf, average='macro')
 print("\n=== Classification Metrics ===")
 print("Macro F1-score:", f1)

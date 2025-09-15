@@ -9,14 +9,16 @@ This exercise explores **predicting/determining BMI Category from height/weight*
    .venv\Scripts\activate      # Windows
 3. Install dependencies/requirements:
    pip install -r requirements.txt
+
    ### Requirements
     pandas
     scikit-learn
     matplotlib
-4. Data Prep
+   
+5. Data Prep
    python code/data-prep/dataPrep.py
    -Strips whitespace from headers, renames the columns to be easier used, converts values to numeric and removes invalid rows.
-5. Classifier Model
+6. Classifier Model
    python code/custom-classifier-model/customClassifierModel.py
    -Logistic Regression, Random Forrest Classifier
    -Gives BMI Category based on given heights (50,100,150,200,250cm) with metric reporting (Macro F1 Measure/score, ROC Curve, AUC)

@@ -9,12 +9,12 @@ This exercise explores **predicting/determining BMI Category from height/weight*
    .venv\Scripts\activate      # Windows
 3. Install dependencies/requirements:
    pip install -r requirements.txt
-
+---
    ### Requirements
     pandas
     scikit-learn
     matplotlib
-   
+---  
 5. Data Prep
    python code/data-prep/dataPrep.py
    -Strips whitespace from headers, renames the columns to be easier used, converts values to numeric and removes invalid rows.

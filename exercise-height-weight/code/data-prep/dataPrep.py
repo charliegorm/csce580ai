@@ -28,6 +28,12 @@ def clean_data(input_file, output_file):
     print(f"Cleaned data saved to {output_file}")
 
 if __name__ == "__main__":
-    input_path = "../DataSample-WeightHeight - Sheet1.csv"
-    output_path = "../data/cleaned_data.csv"
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    input_path = os.path.join(BASE_DIR, "../../data/weight_height_raw.csv")
+    output_path = os.path.join(BASE_DIR, "../../data/cleaned_data.csv")
+    print("Looking for input at:", os.path.abspath(input_path))
+    print("Will save cleaned file to:", os.path.abspath(output_path))
     clean_data(input_path, output_path)
+    
+
+

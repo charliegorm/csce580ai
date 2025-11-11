@@ -15,3 +15,61 @@
 - Variables (X): T, W, F, O, U, R, c1, c2, c3
 - Domains (D): T,F can be any digit from 1-9 (leading digits / most significant, wont be 0), W,O,U can be any digit from 0-9, R is 0 (only adding 0s), c1 = 0 (carry will be 0 in ones column), c2,c3 can be either 0 or 1 (carry wont be larger than this)
 - Constraints (C): All letters must represent dif unique digit - AllDiff(T, W, F, O, U, R), there cant be any leading 0s - T != 0, the equations for each column - 0 + 0 = R + 10 * c1, W + W + c1 = U + 10 * c2, T + T + c2 = O + 10 * c3, c3 = F (F != 0)
+- b. PSEUDO CODE:
+- # initializing domains
+    D = {
+        T: {1..9}, # wont be 0, most significant dig
+        W: {0..9},
+        F: {1..9}, # as above
+        O: {0..9},
+        U: {0..9},
+        R: {0}, # only adding 0s
+        c1: {0}, # carry = 0 in ones column
+        c2: {0,1}, # can either be 0 or 1 carry wont be larger
+        c3: {0,1} # as above
+    }
+
+    # immediate restrictions / simple pruning
+    R = 0
+    c1 = 0
+    c3 = 1 # bc F != 0
+    F = 1
+
+    # queue of constraint arcs
+    Q = [
+        (W, U), (W, c2), # tens column
+        (T, O), (T, c2), (O, c3), # hundreds column
+        all AllDiff pairs # enforcing that all letters must be unique digits
+    ]
+
+    # propagation loop
+    while Q is not empty:
+        (Xi, Xj) = Q.pop_front()
+        REVISE(Xi, Xj)
+        if domain of Xi was reduced:
+            for each neighbor Xk of Xi (excluding Xj):
+                add (Xk, Xi) back to Q
+
+    # revising if no compatible values dependent upon constraints
+    REVISE(Xi, Xj):
+        revised = False
+        for each value x in D[Xi]:
+            if no value y in D[Xj] satisfies constraint(Xi, Xj):
+                remove x from D[Xi]
+                revised = True
+        return revised
+
+    # based on constraints, deterministic pruning
+    Tens column: 2W = U + 10 * c2
+        U must be even and nonzero
+        remove W in {0,5}
+    
+    Hundreds column: 2T + c2 = O + 10
+        since c3 = 1, T >= 5
+        compute O = 2T + c2 − 10
+        choose c2 = 1 branch so O != F (keeps O odd)
+    
+    # after propagation:
+        R = 0, F = 1, c1 = 0, c3 = 1
+        T in {5..9}, W in {1..4,6..9}, U even (!= 0), O computed accordingly
+

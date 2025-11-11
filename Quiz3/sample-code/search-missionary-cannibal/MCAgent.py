@@ -1,4 +1,5 @@
 from collections import deque
+import heapq # for A* implementation
 
 
 class MCAgent:
@@ -67,6 +68,7 @@ class MCAgent:
                         new_state.parent = curr_state
             return successor
 
+        # no longer will need this, using A* instead of bfs for Q2.2
         def bfs():  # breadth-first-search (BFS)
             initial_state = States(initial_missionaries, initial_cannibals, 0, 0, "left")  # root
             if initial_state.goal_state():
@@ -100,8 +102,52 @@ class MCAgent:
                 final_path.append(final_result)
             return final_path
 
-        solution = bfs()
+        # A* search implementation
+        def a_star(): 
+            def key(s):
+                return (s.left_missionaries, s.left_cannibals, s.right_missionaries, s.right_cannibals, s.boat_position)
+
+            # admissible heuristic: lower bound on crossings remaining, never overestimating 
+            # remaining people on left / 2, bc boat can only hold a max of 2, rounding up tho bc if theres 5/2, 2.5 -> three trips
+            def h(s):
+                remaining = s.left_missionaries + s.left_cannibals
+                return (remaining + 1) // 2
+
+            start = States(initial_missionaries, initial_cannibals, 0, 0, "left")
+            if start.goal_state():
+                return start
+            if not start.valid_state():
+                return None
+
+            g_cost = {key(start): 0}
+            frontier = []
+            tie = 0
+            heapq.heappush(frontier, (h(start), tie, start))
+            closed = set()
+
+            while frontier:
+                _, _, node = heapq.heappop(frontier)
+                if node.goal_state():
+                    return node
+                k_node = key(node)
+                if k_node in closed:
+                    continue
+                closed.add(k_node)
+
+                for child in successors(node):
+                    k_child = key(child)
+                    tentative_g = g_cost[k_node] + 1
+                    if (k_child not in g_cost) or (tentative_g < g_cost[k_child]):
+                        g_cost[k_child] = tentative_g
+                        child.parent = node
+                        tie += 1
+                        f = tentative_g + h(child)
+                        heapq.heappush(frontier, (f, tie, child))
+            return None 
+
+        # using A* instead of BFS now 
+        solution = a_star()
         if solution:
             return find_moves(solution)
         else:
-            return []
+            return [] # empty if no solution exists, i.e. (2,3) for missionaries,cannibals

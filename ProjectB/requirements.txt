@@ -1,0 +1,21 @@
+# Core
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+tqdm
+
+# Transformers / Deep Learning
+torch
+transformers
+datasets
+accelerate
+
+# KaggleHub for dataset import
+kagglehub[pandas-datasets]
+
+# Utility
+pyyaml
+joblib
+scipy

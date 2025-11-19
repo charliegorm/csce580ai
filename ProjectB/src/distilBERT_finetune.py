@@ -118,15 +118,33 @@ def main():
     # saving training log + curves
     log_hist = pd.DataFrame(trainer.state.log_history)
     log_hist.to_csv(tablesDir / "distilbert_train_log.csv", index=False)
+    
+    # ensuring there is at least one validation loss/accuracy point
+    # runs a single evaluation on the validation set and appends a row with epoch=1.0
+    if "eval_loss" not in log_hist.columns or "eval_accuracy" not in log_hist.columns:
+        eval_metrics_val = trainer.evaluate(eval_dataset=valDs)
+        extra_row = {
+            "epoch": 1.0,
+            "eval_loss": eval_metrics_val.get("eval_loss"),
+            "eval_accuracy": eval_metrics_val.get("eval_accuracy"),
+        }
+        log_hist = pd.concat([log_hist, pd.DataFrame([extra_row])], ignore_index=True)
 
+    # show train loss, val loss, and val accuracy vs epoch
     fig = plt.figure(figsize=(6,4))
-    if "loss" in log_hist:       plt.plot(log_hist.get("epoch"), log_hist.get("loss"), marker="o", label="train loss")
-    if "eval_loss" in log_hist:  plt.plot(log_hist.get("epoch"), log_hist.get("eval_loss"), marker="o", label="val loss")
-    if "eval_accuracy" in log_hist: plt.plot(log_hist.get("epoch"), log_hist.get("eval_accuracy"), marker="o", label="val acc")
-    plt.xlabel("epoch"); plt.ylabel("loss"); plt.legend(); plt.title("DistilBERT: Training Loss Curve")
+    if "loss" in log_hist:
+        plt.plot(log_hist["epoch"], log_hist["loss"], marker="o", label="train loss")
+    if "eval_loss" in log_hist:
+        plt.plot(log_hist["epoch"], log_hist["eval_loss"], marker="o", label="val loss")
+    if "eval_accuracy" in log_hist:
+        plt.plot(log_hist["epoch"], log_hist["eval_accuracy"], marker="o", label="val accuracy")
+    plt.xlabel("epoch")
+    plt.ylabel("value")
+    plt.legend()
+    plt.title("DistilBERT: Training & Validation Metrics")
     fig.tight_layout()
     fig.savefig(figsDir / "distilbert_train_val_curves.png", dpi=150); plt.close(fig)
-
+    
     # final test evaluation (one time)
     print("Evaluating on TEST set ...")
     t1 = time.time()

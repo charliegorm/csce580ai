@@ -230,21 +230,27 @@ All outputs computed using the trained models or derived from model behavior pat
 
 # 3. Fine-Tuned DistilBERT — Training Curves Analysis
 
-The following figure shows **training loss across the single epoch**, demonstrating steady learning without divergence:
+The following figure shows the training & validation metrics across the single fine-tuning epoch, including:
+
+- Training loss  
+- Validation loss  
+- Validation accuracy  
 
 <img src="../figures/distilbert_train_val_curves.png" width="500">
 
 ### Training Curve Interpretation
-
-- Training loss consistently decreases over the epoch.  
-- Validation loss tracks similarly without diverging.
-- No sharp upward swing in validation loss -> no overfitting.
-- However, model accuracy plateaued early due to:
-  - use of CPU/MPS instead of GPU  
-  - only 1 epoch of training (time constraints)
+- Training loss decreases smoothly, indicating consistent learning.
+- Validation loss also decreases, showing that the model is generalizing rather than overfitting.
+- Validation accuracy rises steadily, stabilizing near ~0.80 by the end of the epoch.
+- With only 1 epoch, the curves show no signs of instability or divergence.
+- Training quality is limited mainly by:
+  - Machine hardware constraints  
+  - Single-epoch fine-tuning (done to keep runtime manageable)
 
 ### Conclusion
-Model is learning steadily but would benefit from 2–3 epochs on a different machine.
+
+The model learns cleanly and efficiently during the single epoch, with both validation loss and validation accuracy trending in the correct direction.  
+More epochs (2–3) on a proper machine would likely yield improved performance and smoother curves.
 
 ---
 
@@ -279,7 +285,7 @@ These show false positives, false negatives, and class distribution.
 
 ---
 
-# 5. Precision, Recall, F1 Comparison
+# 5. Performance Comparison - Precision, Recall, F1 Comparison
 
 | Model | Accuracy | Precision | Recall | F1 |
 |-------|----------|-----------|--------|-----|
@@ -297,7 +303,7 @@ These show false positives, false negatives, and class distribution.
 
 ---
 
-# 6. Training & Inference Efficiency
+# 6. Time Complexity / Training & Inference Efficiency
 
 | Model | Train Time | Inference Time |
 |-------|------------|----------------|

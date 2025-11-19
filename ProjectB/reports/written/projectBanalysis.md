@@ -234,7 +234,9 @@ The following figure shows the training & validation metrics across the single f
 
 - Training loss  
 - Validation loss  
-- Validation accuracy  
+- Validation accuracy
+
+Note that the validation portion of this plot only includes one point (for loss and accuracy) because I only ran evaluation once at the end, not during, as the time it took for execution was much too large for my current machine / environment setup. 
 
 <img src="../figures/distilbert_train_val_curves.png" width="500">
 

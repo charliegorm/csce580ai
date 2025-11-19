@@ -17,6 +17,12 @@ ProjectB/data/processed/
 *.bin
 *.safetensors
 
+# HuggingFace cache directories
+# (prevents accidentally tracking ~/.cache/huggingface or local cache clones)
+**/huggingface/
+**/.cache/huggingface/
+**/.cache/
+
 # blocking distilbert model artifacts
 ProjectB/models/distilbert/
 !ProjectB/models/distilbert/.gitkeep
@@ -24,3 +30,25 @@ ProjectB/models/distilbert/
 # blocking training runs/checkpoints
 **/runs/
 **/checkpoint-*/
+
+# preventing auto-generated trainer logs + state
+**/trainer_state.json
+**/trainer_config.json
+**/optimizer.pt
+**/scheduler.pt
+**/training_args.bin
+
+# Torch large files
+*.pt
+*.pth
+
+# making sure nothing under models gets committed 
+ProjectB/models/**/*.pt
+ProjectB/models/**/*.pth
+ProjectB/models/**/checkpoint-*/
+ProjectB/models/**/optimizer.pt
+ProjectB/models/**/trainer_state.json
+
+# MacOS / VSCode junk
+.DS_Store
+.vscode/

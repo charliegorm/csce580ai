@@ -1,13 +1,13 @@
 {
-  "eval_loss": 0.5100886821746826,
-  "eval_accuracy": 0.7999,
-  "eval_precision": 0.7853472882968602,
-  "eval_recall": 0.8254,
-  "eval_f1": 0.8048756704046807,
-  "eval_runtime": 143.6253,
-  "eval_samples_per_second": 69.626,
-  "eval_steps_per_second": 2.179,
+  "eval_loss": 0.5116932392120361,
+  "eval_accuracy": 0.798,
+  "eval_precision": 0.7862082212831348,
+  "eval_recall": 0.8186,
+  "eval_f1": 0.8020772094846169,
+  "eval_runtime": 156.4609,
+  "eval_samples_per_second": 63.914,
+  "eval_steps_per_second": 2.0,
   "epoch": 1.0,
-  "train_wall_time_sec": 180.57693099975586,
-  "test_infer_time_sec": 143.6395299434662
+  "train_wall_time_sec": 198.59605383872986,
+  "test_infer_time_sec": 156.48453283309937
 }

@@ -123,7 +123,7 @@ def main():
     if "loss" in log_hist:       plt.plot(log_hist.get("epoch"), log_hist.get("loss"), marker="o", label="train loss")
     if "eval_loss" in log_hist:  plt.plot(log_hist.get("epoch"), log_hist.get("eval_loss"), marker="o", label="val loss")
     if "eval_accuracy" in log_hist: plt.plot(log_hist.get("epoch"), log_hist.get("eval_accuracy"), marker="o", label="val acc")
-    plt.xlabel("epoch"); plt.legend(); plt.title("DistilBERT: Train/Val Curves")
+    plt.xlabel("epoch"); plt.ylabel("loss"); plt.legend(); plt.title("DistilBERT: Training Loss Curve")
     fig.tight_layout()
     fig.savefig(figsDir / "distilbert_train_val_curves.png", dpi=150); plt.close(fig)
 

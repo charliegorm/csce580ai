@@ -1,0 +1,46 @@
+# Model Artifacts (TOO LARGE)
+*.bin
+*.safetensors
+*.onnx
+*.h5
+
+# Data Folders (LARGE)
+ProjectB/data/raw/
+ProjectB/data/interim/
+ProjectB/data/processed/
+!ProjectB/data/raw/.gitkeep
+!ProjectB/data/interim/.gitkeep
+!ProjectB/data/processed/.gitkeep
+
+# Large HuggingFace cache files
+*.arrow
+*.bin
+*.safetensors
+
+# blocking distilbert model artifacts
+ProjectB/models/distilbert/
+!ProjectB/models/distilbert/.gitkeep
+
+# blocking training runs/checkpoints
+**/runs/
+**/checkpoint-*/
+
+# === HuggingFace / cache directories ===
+**/huggingface/
+**/.cache/huggingface/
+**/.cache/
+
+# === Prevent auto-generated trainer logs & state ===
+**/trainer_state.json
+**/trainer_config.json
+**/optimizer.pt
+**/scheduler.pt
+**/training_args.bin
+
+# === Torch large files ===
+*.pt
+*.pth
+
+# === VSCode / OS junk ===
+.vscode/
+.DS_Store

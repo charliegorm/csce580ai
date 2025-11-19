@@ -231,7 +231,7 @@ All outputs computed using the trained models or derived from model behavior pat
 # 3. Fine-Tuned DistilBERT — Training Curves Analysis
 
 ```md
-<img src="ProjectB/reports/figures/distilbert_train_val_curves.png">
+<img src="../figures/distilbert_train_val_curves.png">
 ```
 
 ### Training Curve Interpretation

@@ -230,9 +230,9 @@ All outputs computed using the trained models or derived from model behavior pat
 
 # 3. Fine-Tuned DistilBERT — Training Curves Analysis
 
-```md
-<img src="../figures/distilbert_train_val_curves.png">
-```
+The following figure shows **training loss across the single epoch**, demonstrating steady learning without divergence:
+
+<img src="../figures/distilbert_train_val_curves.png" width="500">
 
 ### Training Curve Interpretation
 
@@ -250,18 +250,17 @@ Model is learning steadily but would benefit from 2–3 epochs on a different ma
 
 # 4. Confusion Matrix Discussion
 
-My project generated 3 confusion matrices:
+My project generated 3 confusion matrices, below are the confusion matrices for all models.  
+These show false positives, false negatives, and class distribution.
 
-- DistilBERT Fine-Tuned  
-- DistilBERT Base  
-- Logistic Regression
+### Fine-Tuned DistilBERT Confusion Matrix  
+<img src="../figures/distilbert_finetune_confusion.png" width="350">
 
+### Base DistilBERT Confusion Matrix  
+<img src="../figures/distilbert_base_confusion.png" width="350">
 
-```md
-<img src="ProjectB/reports/figures/distilbert_finetune_confusion.png">
-<img src="ProjectB/reports/figures/distilbert_base_confusion.png">
-<img src="ProjectB/reports/figures/logreg_confusion.png">
-```
+### Logistic Regression Confusion Matrix  
+<img src="../figures/logreg_confusion.png" width="350">
 
 ### Misclassification Observations
 

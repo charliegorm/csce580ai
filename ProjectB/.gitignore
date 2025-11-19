@@ -11,3 +11,16 @@ ProjectB/data/processed/
 !ProjectB/data/raw/.gitkeep
 !ProjectB/data/interim/.gitkeep
 !ProjectB/data/processed/.gitkeep
+
+# Large HuggingFace cache files
+*.arrow
+*.bin
+*.safetensors
+
+# blocking distilbert model artifacts
+ProjectB/models/distilbert/
+!ProjectB/models/distilbert/.gitkeep
+
+# blocking training runs/checkpoints
+**/runs/
+**/checkpoint-*/

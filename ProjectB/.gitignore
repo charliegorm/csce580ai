@@ -1,0 +1,13 @@
+# Model Artifacts (TOO LARGE)
+*.bin
+*.safetensors
+*.onnx
+*.h5
+
+# Data Folders (LARGE)
+ProjectB/data/raw/
+ProjectB/data/interim/
+ProjectB/data/processed/
+!ProjectB/data/raw/.gitkeep
+!ProjectB/data/interim/.gitkeep
+!ProjectB/data/processed/.gitkeep

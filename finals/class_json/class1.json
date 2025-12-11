@@ -1,0 +1,188 @@
+{
+  "class_title_raw": "Class 1 - 19 Aug 2025",
+  "class_number": 1,
+  "class_date": "2025-08-19",
+  "num_students": 44,
+  "students": [
+    {
+      "student_label": "student_1",
+      "username_label": "student_1_user"
+    },
+    {
+      "student_label": "student_2",
+      "username_label": "student_2_user"
+    },
+    {
+      "student_label": "student_3",
+      "username_label": "student_3_user"
+    },
+    {
+      "student_label": "student_4",
+      "username_label": "student_4_user"
+    },
+    {
+      "student_label": "student_5",
+      "username_label": "student_5_user"
+    },
+    {
+      "student_label": "student_6",
+      "username_label": "student_6_user"
+    },
+    {
+      "student_label": "student_7",
+      "username_label": "student_7_user"
+    },
+    {
+      "student_label": "student_8",
+      "username_label": "student_8_user"
+    },
+    {
+      "student_label": "student_9",
+      "username_label": "student_9_user"
+    },
+    {
+      "student_label": "student_10",
+      "username_label": "student_10_user"
+    },
+    {
+      "student_label": "student_11",
+      "username_label": "student_11_user"
+    },
+    {
+      "student_label": "student_12",
+      "username_label": "student_12_user"
+    },
+    {
+      "student_label": "student_13",
+      "username_label": "student_13_user"
+    },
+    {
+      "student_label": "student_14",
+      "username_label": "student_14_user"
+    },
+    {
+      "student_label": "student_15",
+      "username_label": "student_15_user"
+    },
+    {
+      "student_label": "student_16",
+      "username_label": "student_16_user"
+    },
+    {
+      "student_label": "student_17",
+      "username_label": "student_17_user"
+    },
+    {
+      "student_label": "student_18",
+      "username_label": "student_18_user"
+    },
+    {
+      "student_label": "student_19",
+      "username_label": "student_19_user"
+    },
+    {
+      "student_label": "student_20",
+      "username_label": "student_20_user"
+    },
+    {
+      "student_label": "student_21",
+      "username_label": "student_21_user"
+    },
+    {
+      "student_label": "student_22",
+      "username_label": "student_22_user"
+    },
+    {
+      "student_label": "student_23",
+      "username_label": "student_23_user"
+    },
+    {
+      "student_label": "student_24",
+      "username_label": "student_24_user"
+    },
+    {
+      "student_label": "student_25",
+      "username_label": "student_25_user"
+    },
+    {
+      "student_label": "student_26",
+      "username_label": "student_26_user"
+    },
+    {
+      "student_label": "student_27",
+      "username_label": "student_27_user"
+    },
+    {
+      "student_label": "student_28",
+      "username_label": "student_28_user"
+    },
+    {
+      "student_label": "student_29",
+      "username_label": "student_29_user"
+    },
+    {
+      "student_label": "student_30",
+      "username_label": "student_30_user"
+    },
+    {
+      "student_label": "student_31",
+      "username_label": "student_31_user"
+    },
+    {
+      "student_label": "student_32",
+      "username_label": "student_32_user"
+    },
+    {
+      "student_label": "student_33",
+      "username_label": "student_33_user"
+    },
+    {
+      "student_label": "student_34",
+      "username_label": "student_34_user"
+    },
+    {
+      "student_label": "student_35",
+      "username_label": "student_35_user"
+    },
+    {
+      "student_label": "student_36",
+      "username_label": "student_36_user"
+    },
+    {
+      "student_label": "student_37",
+      "username_label": "student_37_user"
+    },
+    {
+      "student_label": "student_38",
+      "username_label": "student_38_user"
+    },
+    {
+      "student_label": "student_39",
+      "username_label": "student_39_user"
+    },
+    {
+      "student_label": "student_40",
+      "username_label": "student_40_user"
+    },
+    {
+      "student_label": "student_41",
+      "username_label": "student_41_user"
+    },
+    {
+      "student_label": "student_42",
+      "username_label": "student_42_user"
+    },
+    {
+      "student_label": "student_43",
+      "username_label": "student_43_user"
+    },
+    {
+      "student_label": "student_44",
+      "username_label": "student_44_user"
+    }
+  ],
+  "image_filename": "class1.jpg",
+  "class_number_from_filename": 1,
+  "is_exam_day": false,
+  "exam_type": null
+}
